@@ -1,0 +1,12 @@
+"Name":"TestCase",
+"Price":"10",
+"HappyHour":"MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY",
+
+"Name":"Bier(Vaasje)",
+"Price":"2.75",
+"HappyHour":"TUESDAY,THURSDAY,FRIDAY",
+
+"Name":"Desperado",
+"Price":"4.25",
+"HappyHour":"WEDNESDAY",
+
