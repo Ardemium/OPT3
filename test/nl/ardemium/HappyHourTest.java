@@ -11,6 +11,7 @@ class HappyHourTest {
 
     @Test
     void notifyObserver() {
+        //De test Dish word getest op prijs mutatie tijdens happy hour
         LocalTime localTime = LocalTime.now();
         LocalDate localDate = LocalDate.now();
         if(localTime.getHour() == HappyHour.getHappyHour() && Menu.getMenuInstance().getDishList().get(0).getHappyHour().contains(String.format("%s",localDate.getDayOfWeek()))){
