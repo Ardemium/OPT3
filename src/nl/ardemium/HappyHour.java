@@ -9,8 +9,8 @@ public class HappyHour implements IObservable {
     private final LocalTime localTime = LocalTime.now();
     private final LocalDate localDate = LocalDate.now();
     private final ArrayList<Dish> happyHourDish = new ArrayList<>();
+    private final ArrayList<Boolean> happy = new ArrayList<>();
     private static int happyHour = 15;
-    private boolean happy = false;
 
     public static void setHappyHour(int newHappyHour) {
         happyHour = newHappyHour;
@@ -23,22 +23,25 @@ public class HappyHour implements IObservable {
     @Override
     public void registerObserver(Dish dish) {
         happyHourDish.add(dish);
+        happy.add(false);
     }
 
     @Override
     public void notifyObserver() {
+        int counter = 0;
         for (Dish d :
                 happyHourDish) {
-            if (d.getHappyHour().contains(String.format("%s", localDate.getDayOfWeek())) && localTime.getHour() == happyHour) {
-                if (!happy) {
+            if (d.getHappyHour().contains(String.format("%s", localDate.getDayOfWeek()))) {
+                if (!happy.get(counter) && localTime.getHour() == happyHour) {
                     d.update(d.getPrice() * 0.5);
-                    happy = true;
+                    happy.set(counter, true);
                 }
-                if (localTime.getHour() == happyHour + 1) {
+                if ((localTime.getHour() == (1 + happyHour))) {
                     d.update(d.getPrice() * 2);
-                    happy = false;
+                    happy.set(counter, false);
                 }
             }
+            counter++;
         }
     }
 
